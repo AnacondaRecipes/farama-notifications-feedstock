@@ -1,0 +1,45 @@
+{% set name = "Farama-Notifications" %}
+{% set version = "0.0.4" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 13fceff2d14314cf80703c8266462ebf3733c7d165336eee998fc58e545efd18
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation"
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+    - wheel
+  run:
+    - python
+
+test:
+  requires:
+    - pip
+  imports:
+    - farama_notifications
+  commands:
+    - pip check
+
+about:
+  home: "https://github.com/Farama-Foundation/Farama-Notifications"
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "Notifications for all Farama Foundation maintained libraries."
+  description: "Notifications for all Farama Foundation maintained libraries."
+  doc_url: https://github.com/Farama-Foundation/Farama-Notifications
+  dev_url: https://github.com/Farama-Foundation/Farama-Notifications
+
+extra:
+  recipe-maintainers:
+    - JeanChristopheMorinPerso
